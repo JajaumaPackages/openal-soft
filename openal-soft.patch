@@ -1,0 +1,12 @@
+--- CMakeLists.txt	2009-06-08 07:26:31.000000000 +0200
++++ CMakeLists.txt	2009-08-08 01:11:51.000000000 +0200
+@@ -391,7 +391,7 @@
+ # Needed for openal.pc.in
+ SET(prefix ${CMAKE_INSTALL_PREFIX})
+ SET(exec_prefix "\${prefix}")
+-SET(libdir "\${exec_prefix}/${LIB_INSTALL_DIR}")
++SET(libdir "\${exec_prefix}/lib${LIB_SUFFIX}")
+ SET(bindir "\${exec_prefix}/bin")
+ SET(includedir "\${prefix}/include")
+ SET(PACKAGE_VERSION "${LIB_VERSION}")
+
