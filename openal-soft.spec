@@ -8,6 +8,7 @@ License:	LGPLv2+
 URL:		http://kcat.strangesoft.net/openal.html
 Source0:	http://kcat.strangesoft.net/openal-releases/openal-soft-%{version}.tar.bz2
 Patch1:		openal-soft.patch
+Patch2:		upstream.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:	alsa-lib-devel
@@ -42,6 +43,7 @@ developing applications that use %{name}.
 %prep
 %setup -q
 %patch1 -p0 -b .orig
+%patch2 -p0 -b .orig
 
 %build
 %cmake .
