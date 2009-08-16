@@ -1,6 +1,6 @@
 Name:		openal-soft
 Version:	1.8.466
-Release:	6%{?dist}
+Release:	7%{?dist}
 Summary:	Open Audio Library
 
 Group:		System Environment/Libraries
@@ -74,6 +74,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/openal.pc
 
 %changelog
+* Sun Aug 16 2009 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.8.466-7
+- Fixed bug 517721. Added upstream.patch
+
 * Sat Aug 08 2009 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.8.466-6
 - Fixed license and pkgconfig problem thx goes to Christoph Wickert
 
