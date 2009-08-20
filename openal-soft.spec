@@ -1,14 +1,16 @@
+%global revision 487f0dde7593144ceabd817306500465caf7602a
+
 Name:		openal-soft
 Version:	1.8.466
-Release:	7%{?dist}
+Release:	8.%{revision}svn%{?dist}
 Summary:	Open Audio Library
 
 Group:		System Environment/Libraries
 License:	LGPLv2+
 URL:		http://kcat.strangesoft.net/openal.html
-Source0:	http://kcat.strangesoft.net/openal-releases/openal-soft-%{version}.tar.bz2
+#http://repo.or.cz/w/openal-soft.git?a=snapshot;h=487f0dde7593144ceabd817306500465caf7602a;sf=tgz
+Source0:	openal-soft-%{version}.%{revision}.tar.gz
 Patch1:		openal-soft.patch
-Patch2:		upstream.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:	alsa-lib-devel
@@ -41,9 +43,8 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
+%setup -q -n openal-soft
 %patch1 -p0 -b .orig
-%patch2 -p0 -b .orig
 
 %build
 %cmake .
@@ -74,6 +75,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/openal.pc
 
 %changelog
+* Fri Aug 21 2009 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.8.466-8.487f0dde7593144ceabd817306500465caf7602agit
+- Fixed bug 517973
+
 * Sun Aug 16 2009 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.8.466-7
 - Fixed bug 517721. Added upstream.patch
 
