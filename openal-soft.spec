@@ -1,15 +1,15 @@
-%global revision 487f0dde7593144ceabd817306500465caf7602a
+%global revision d6e439244ae00a1750f0dc8b249f47efb4967a23
 
 Name:		openal-soft
-Version:	1.8.466
-Release:	9.%{revision}git%{?dist}
+Version:	1.9.563
+Release:	1.%{revision}git%{?dist}
 Summary:	Open Audio Library
 
 Group:		System Environment/Libraries
 License:	LGPLv2+
 URL:		http://kcat.strangesoft.net/openal.html
-#http://repo.or.cz/w/openal-soft.git?a=snapshot;h=487f0dde7593144ceabd817306500465caf7602a;sf=tgz
-Source0:	openal-soft-%{version}.%{revision}.tar.gz
+#http://repo.or.cz/w/openal-soft.git?a=snapshot;h=%{revision};sf=tgz
+Source0:	openal-soft-%{revision}.tar.gz
 Patch1:		openal-soft.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -75,6 +75,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/openal.pc
 
 %changelog
+* Fri Oct  9 2009 Hans de Goede <hdegoede@redhat.com> - 1.9.563-1.d6e439244ae00a1750f0dc8b249f47efb4967a23git
+- Update to 1.9.563 + some fixes from git
+- This fixes:
+  - Not having any sound in chromium-bsu 
+  - Various openal using programs hanging on exit
+
 * Fri Aug 21 2009 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.8.466-9.487f0dde7593144ceabd817306500465caf7602agit
 - Fixed version info
 
