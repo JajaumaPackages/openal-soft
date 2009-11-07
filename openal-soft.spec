@@ -1,4 +1,4 @@
-%global revision d6e439244ae00a1750f0dc8b249f47efb4967a23
+%global revision c1b161b44bbf60420de2e1ba886e957d9fcd495e
 
 Name:		openal-soft
 Version:	1.9.563
@@ -75,7 +75,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/openal.pc
 
 %changelog
-* Fri Oct  9 2009 Hans de Goede <hdegoede@redhat.com> - 1.9.563-1.d6e439244ae00a1750f0dc8b249f47efb4967a23git
+* Sat Nov 07 2009 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.9.563-1.c1b161b44bbf60420de2e1ba886e957d9fcd495e
+- Updatet to an newer git version because of some pulseaudio fixes.
+- I hope it fix bug 533501
+
+* Fri Oct  09 2009 Hans de Goede <hdegoede@redhat.com> - 1.9.563-1.d6e439244ae00a1750f0dc8b249f47efb4967a23git
 - Update to 1.9.563 + some fixes from git
 - This fixes:
   - Not having any sound in chromium-bsu 
