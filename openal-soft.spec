@@ -1,6 +1,6 @@
 Name:		openal-soft
 Version:	1.10.622
-Release:	1.%{?dist}
+Release:	1%{?dist}
 Summary:	Open Audio Library
 
 Group:		System Environment/Libraries
