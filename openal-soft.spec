@@ -1,15 +1,12 @@
-%global revision c1b161b44bbf60420de2e1ba886e957d9fcd495e
-
 Name:		openal-soft
-Version:	1.9.563
-Release:	2.%{revision}git%{?dist}
+Version:	1.10.622
+Release:	1.%{?dist}
 Summary:	Open Audio Library
 
 Group:		System Environment/Libraries
 License:	LGPLv2+
 URL:		http://kcat.strangesoft.net/openal.html
-#http://repo.or.cz/w/openal-soft.git?a=snapshot;h=%{revision};sf=tgz
-Source0:	openal-soft-%{revision}.tar.gz
+Source0:	http://kcat.strangesoft.net/openal-releases/openal-soft-%{version}.tar.bz2
 Patch1:		openal-soft.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -75,6 +72,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/openal.pc
 
 %changelog
+* Mon Nov 09 2009 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.10.622-1
+- New upstream release
+
 * Sat Nov 07 2009 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.9.563-2.c1b161b44bbf60420de2e1ba886e957d9fcd495e
 - Updatet to an newer git version because of some pulseaudio fixes.
 - I hope it fix bug 533501
