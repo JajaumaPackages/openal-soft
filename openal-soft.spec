@@ -1,6 +1,6 @@
 Name:		openal-soft
 Version:	1.10.622
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Open Audio Library
 
 Group:		System Environment/Libraries
@@ -52,6 +52,8 @@ rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 
+install -Dpm644 alsoftrc.sample %{buildroot}%{_sysconfdir}/openal/alsoft.conf
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -64,6 +66,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc COPYING
 %{_bindir}/openal-info
 %{_libdir}/libopenal.so.*
+%dir %{_sysconfdir}/openal
+%config(noreplace) %{_sysconfdir}/openal/alsoft.conf
 
 %files devel
 %defattr(-,root,root,-)
@@ -72,6 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/openal.pc
 
 %changelog
+* Tue Nov 10 2009 Andreas Bierfert <andreas.bierfert[AT]lowlatency.de> - 1.10.622-2
+- add default config
+
 * Mon Nov 09 2009 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.10.622-1
 - New upstream release
 
