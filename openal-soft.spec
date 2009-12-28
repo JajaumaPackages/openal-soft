@@ -1,12 +1,15 @@
+%global revision 3793919892e6d61e5fec3abeaaeebc3f2332be13
+
 Name:		openal-soft
 Version:	1.10.622
-Release:	2%{?dist}
+Release:	4%{?dist}
 Summary:	Open Audio Library
 
 Group:		System Environment/Libraries
 License:	LGPLv2+
 URL:		http://kcat.strangesoft.net/openal.html
-Source0:	http://kcat.strangesoft.net/openal-releases/openal-soft-%{version}.tar.bz2
+#http://repo.or.cz/w/openal-soft.git?a=snapshot;h=%{revision};sf=tgz 
+Source0:	openal-soft-%{revision}.tar.gz
 Patch1:		openal-soft.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -76,6 +79,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/openal.pc
 
 %changelog
+* Mon Dec 28 2009 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.10.622-4.3793919892e6d61e5fec3abeaaeebc3f2332be13
+- Fixed broken upgrade paths.
+
+* Wed Nov 11 2009 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.10.622-3
+- F12 and devel only release.
+
 * Tue Nov 10 2009 Andreas Bierfert <andreas.bierfert[AT]lowlatency.de> - 1.10.622-2
 - add default config
 
