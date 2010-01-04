@@ -1,8 +1,8 @@
-%global revision 3793919892e6d61e5fec3abeaaeebc3f2332be13
+%global revision 0ceaa01c3de75c946ff2e7591e7f69b28ec00409
 
 Name:		openal-soft
 Version:	1.10.622
-Release:	5.%{revision}git%{?dist}
+Release:	6.%{revision}git%{?dist}
 Summary:	Open Audio Library
 
 Group:		System Environment/Libraries
@@ -79,6 +79,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/openal.pc
 
 %changelog
+* Mon Jan 04 2010 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.10.622-6.0ceaa01c3de75c946ff2e7591e7f69b28ec00409
+- Newer git version with more Pulseaudio fixes.
+
 * Mon Dec 28 2009 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.10.622-5.3793919892e6d61e5fec3abeaaeebc3f2332be13
 - Fixed small spec verion info.
 
