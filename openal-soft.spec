@@ -80,7 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Mon Jan 04 2010 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.10.622-6.0ceaa01c3de75c946ff2e7591e7f69b28ec00409
-- Newer git version with more Pulseaudio fixes.
+- Newer git version with more Pulseaudio fixes. Have fun.
 
 * Mon Dec 28 2009 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.10.622-5.3793919892e6d61e5fec3abeaaeebc3f2332be13
 - Fixed small spec verion info.
