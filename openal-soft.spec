@@ -1,15 +1,15 @@
-%global revision a9e0e57797c6f4321d5776e1f29bf1e75b11e6a1
+%global alphatag 20100225
 
 Name:		openal-soft
 Version:	1.11.753
-Release:	2.%{revision}git%{?dist}
+Release:	3.%{alphatag}git%{?dist}
 Summary:	Open Audio Library
 
 Group:		System Environment/Libraries
 License:	LGPLv2+
 URL:		http://kcat.strangesoft.net/openal.html
 #http://repo.or.cz/w/openal-soft.git?a=snapshot;h=%{revision};sf=tgz
-Source0:	openal-soft-%{revision}.tar.gz 
+Source0:	openal-soft-.%{alphatag}.tar.gz 
 Patch1:		openal-soft.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -17,8 +17,8 @@ BuildRequires:	alsa-lib-devel
 BuildRequires:	pulseaudio-libs-devel
 BuildRequires:	portaudio-devel
 BuildRequires:	cmake
-Obsoletes: 	openal <= 0.0.10
-Provides: 	openal = %{version}
+Obsoletes:	openal <= 0.0.10
+Provides:	openal = %{version}
 
 %description
 OpenAL Soft is a cross-platform software implementation of the OpenAL 3D
@@ -35,8 +35,8 @@ and audio capture.
 Summary:	Development files for %{name}
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Obsoletes: 	openal-devel <= 0.0.10
-Provides: 	openal-devel = %{version}
+Obsoletes:	openal-devel <= 0.0.10
+Provides:	openal-devel = %{version}
 
 %description	devel
 The %{name}-devel package contains libraries and header files for
@@ -79,6 +79,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/openal.pc
 
 %changelog
+* Mon Mar 01 2010 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.11.753-3.20100225
+- Fixed Version Number
+
 * Sun Feb 28 2010 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.11.753-2.a9e0e57797c6f4321d5776e1f29bf1e75b11e6a1
 - Fixed Bug 567870
 
