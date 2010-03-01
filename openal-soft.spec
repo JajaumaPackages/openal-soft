@@ -1,4 +1,5 @@
 %global alphatag 20100225
+%global revision a9e0e57797c6f4321d5776e1f29bf1e75b11e6a1
 
 Name:		openal-soft
 Version:	1.11.753
@@ -9,7 +10,7 @@ Group:		System Environment/Libraries
 License:	LGPLv2+
 URL:		http://kcat.strangesoft.net/openal.html
 #http://repo.or.cz/w/openal-soft.git?a=snapshot;h=%{revision};sf=tgz
-Source0:	openal-soft-.%{alphatag}.tar.gz 
+Source0:	openal-soft-%{revision}.tar.gz 
 Patch1:		openal-soft.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
