@@ -43,7 +43,7 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup-q -n openal-soft 
+%setup -q -n openal-soft 
 %patch1 -p0 -b .orig
 
 %build
