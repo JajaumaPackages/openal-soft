@@ -1,16 +1,14 @@
-%global alphatag 20100225
-%global revision a9e0e57797c6f4321d5776e1f29bf1e75b11e6a1
-
 Name:		openal-soft
-Version:	1.11.753
-Release:	3.%{alphatag}git%{?dist}
+Version:	1.12.854
+Release:	1%{?dist}
 Summary:	Open Audio Library
 
 Group:		System Environment/Libraries
 License:	LGPLv2+
 URL:		http://kcat.strangesoft.net/openal.html
+Source0:	http://kcat.strangesoft.net/openal-releases/openal-soft-%{version}.tar.bz2
 #http://repo.or.cz/w/openal-soft.git?a=snapshot;h=%{revision};sf=tgz
-Source0:	openal-soft-%{revision}.tar.gz 
+#Source0:	openal-soft-%{version}.tar.gz 
 Patch1:		openal-soft.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -80,6 +78,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/openal.pc
 
 %changelog
+* Thu Apr 01 2010 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.12.854-1
+- New upstream release
+
 * Mon Mar 01 2010 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.11.753-3.20100225
 - Fixed Version Number
 
