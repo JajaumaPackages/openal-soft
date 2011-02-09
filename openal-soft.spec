@@ -1,6 +1,6 @@
 Name:		openal-soft
 Version:	1.12.854
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Open Audio Library
 
 Group:		System Environment/Libraries
@@ -78,6 +78,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/openal.pc
 
 %changelog
+* Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.12.854-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
 * Thu Apr 01 2010 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.12.854-1
 - New upstream release
 
