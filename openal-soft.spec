@@ -1,23 +1,20 @@
-Name:		openal-soft
-Version:	1.12.854
-Release:	3%{?dist}
-Summary:	Open Audio Library
+Name:           openal-soft
+Version:        1.13
+Release:        1%{?dist}
+Summary:        Open Audio Library
 
-Group:		System Environment/Libraries
-License:	LGPLv2+
-URL:		http://kcat.strangesoft.net/openal.html
-Source0:	http://kcat.strangesoft.net/openal-releases/openal-soft-%{version}.tar.bz2
-#http://repo.or.cz/w/openal-soft.git?a=snapshot;h=%{revision};sf=tgz
-#Source0:	openal-soft-%{version}.tar.gz 
-Patch1:		openal-soft.patch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+Group:          System Environment/Libraries
+License:        LGPLv2+
+URL:            http://kcat.strangesoft.net/openal.html
+Source0:        http://kcat.strangesoft.net/openal-releases/openal-soft-%{version}.tar.bz2
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires:	alsa-lib-devel
-BuildRequires:	pulseaudio-libs-devel
-BuildRequires:	portaudio-devel
-BuildRequires:	cmake
-Obsoletes:	openal <= 0.0.10
-Provides:	openal = %{version}
+BuildRequires:  alsa-lib-devel
+BuildRequires:  pulseaudio-libs-devel
+BuildRequires:  portaudio-devel
+BuildRequires:  cmake
+Obsoletes:      openal <= 0.0.10
+Provides:       openal = %{version}
 
 %description
 OpenAL Soft is a cross-platform software implementation of the OpenAL 3D
@@ -30,34 +27,34 @@ absorption, low-pass filters, and reverb, are available through the
 EFX extension. It also facilitates streaming audio, multi-channel buffers,
 and audio capture.
 
-%package	devel
-Summary:	Development files for %{name}
-Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
-Obsoletes:	openal-devel <= 0.0.10
-Provides:	openal-devel = %{version}
+%package        devel
+Summary:        Development files for %{name}
+Group:          Development/Libraries
+Requires:       %{name} = %{version}-%{release}
+Obsoletes:      openal-devel <= 0.0.10
+Provides:       openal-devel = %{version}
 
-%description	devel
+%description    devel
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
 %setup -q
-%patch1 -p0 -b .orig
 
 %build
 %cmake .
 make %{?_smp_mflags}
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT
-find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
+rm -rf %{buildroot}
+make install DESTDIR=%{buildroot}
+
+find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 install -Dpm644 alsoftrc.sample %{buildroot}%{_sysconfdir}/openal/alsoft.conf
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %post -p /sbin/ldconfig
 
@@ -78,6 +75,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/openal.pc
 
 %changelog
+* Thu Jan 26 2012 Andreas Bierfert <andreas.bierfert[AT]lowlatency.de>
+- 1.13-1
+- version upgrade
+- spec cleanup
+
 * Fri Jan 13 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.12.854-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
 
