@@ -1,5 +1,5 @@
 Name:           openal-soft
-Version:        1.13
+Version:        1.14
 Release:        1%{?dist}
 Summary:        Open Audio Library
 
@@ -7,7 +7,6 @@ Group:          System Environment/Libraries
 License:        LGPLv2+
 URL:            http://kcat.strangesoft.net/openal.html
 Source0:        http://kcat.strangesoft.net/openal-releases/openal-soft-%{version}.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  alsa-lib-devel
 BuildRequires:  pulseaudio-libs-devel
@@ -46,22 +45,17 @@ developing applications that use %{name}.
 make %{?_smp_mflags}
 
 %install
-rm -rf %{buildroot}
 make install DESTDIR=%{buildroot}
 
 find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 install -Dpm644 alsoftrc.sample %{buildroot}%{_sysconfdir}/openal/alsoft.conf
 
-%clean
-rm -rf %{buildroot}
-
 %post -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %doc COPYING
 %{_bindir}/openal-info
 %{_libdir}/libopenal.so.*
@@ -69,12 +63,17 @@ rm -rf %{buildroot}
 %config(noreplace) %{_sysconfdir}/openal/alsoft.conf
 
 %files devel
-%defattr(-,root,root,-)
+%{_bindir}/makehrtf
 %{_includedir}/*
 %{_libdir}/libopenal.so
 %{_libdir}/pkgconfig/openal.pc
 
 %changelog
+* Fri Apr  6 2012 Hans de Goede <hdegoede@redhat.com> - 1.14-1
+- 1.14-1
+- version upgrade (rhbz#808968)
+- spec cleanup
+
 * Thu Jan 26 2012 Andreas Bierfert <andreas.bierfert[AT]lowlatency.de>
 - 1.13-1
 - version upgrade
