@@ -1,12 +1,13 @@
 Name:           openal-soft
 Version:        1.14
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Open Audio Library
 
 Group:          System Environment/Libraries
 License:        LGPLv2+
 URL:            http://kcat.strangesoft.net/openal.html
 Source0:        http://kcat.strangesoft.net/openal-releases/openal-soft-%{version}.tar.bz2
+Patch0:         %{name}-1.14-x86.patch
 
 BuildRequires:  alsa-lib-devel
 BuildRequires:  pulseaudio-libs-devel
@@ -39,6 +40,7 @@ developing applications that use %{name}.
 
 %prep
 %setup -q
+%patch0 -p1 -b .x86
 
 %build
 %cmake .
@@ -69,6 +71,9 @@ install -Dpm644 alsoftrc.sample %{buildroot}%{_sysconfdir}/openal/alsoft.conf
 %{_libdir}/pkgconfig/openal.pc
 
 %changelog
+* Thu Apr 12 2012 Dan Horák <dan[at]danny.cz> - 1.14-2
+- the used fpu control bits are x86 specific
+
 * Fri Apr  6 2012 Hans de Goede <hdegoede@redhat.com> - 1.14-1
 - 1.14-1
 - version upgrade (rhbz#808968)
