@@ -1,6 +1,6 @@
 Name:           openal-soft
 Version:        1.14
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Open Audio Library
 
 Group:          System Environment/Libraries
@@ -71,6 +71,9 @@ install -Dpm644 alsoftrc.sample %{buildroot}%{_sysconfdir}/openal/alsoft.conf
 %{_libdir}/pkgconfig/openal.pc
 
 %changelog
+* Fri Jul 20 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.14-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
+
 * Thu Apr 12 2012 Dan Horák <dan[at]danny.cz> - 1.14-2
 - the used fpu control bits are x86 specific
 
