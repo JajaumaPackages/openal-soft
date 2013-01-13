@@ -1,13 +1,12 @@
 Name:           openal-soft
-Version:        1.14
-Release:        3%{?dist}
+Version:        1.15.1
+Release:        1%{?dist}
 Summary:        Open Audio Library
 
 Group:          System Environment/Libraries
 License:        LGPLv2+
 URL:            http://kcat.strangesoft.net/openal.html
 Source0:        http://kcat.strangesoft.net/openal-releases/openal-soft-%{version}.tar.bz2
-Patch0:         %{name}-1.14-x86.patch
 
 BuildRequires:  alsa-lib-devel
 BuildRequires:  pulseaudio-libs-devel
@@ -40,7 +39,6 @@ developing applications that use %{name}.
 
 %prep
 %setup -q
-%patch0 -p1 -b .x86
 
 %build
 %cmake .
@@ -48,10 +46,9 @@ make %{?_smp_mflags}
 
 %install
 make install DESTDIR=%{buildroot}
-
 find %{buildroot} -name '*.la' -exec rm -f {} ';'
-
 install -Dpm644 alsoftrc.sample %{buildroot}%{_sysconfdir}/openal/alsoft.conf
+#cp -ar examples %{buildroot}%{_datarootdir}/openal/
 
 %post -p /sbin/ldconfig
 
@@ -63,14 +60,23 @@ install -Dpm644 alsoftrc.sample %{buildroot}%{_sysconfdir}/openal/alsoft.conf
 %{_libdir}/libopenal.so.*
 %dir %{_sysconfdir}/openal
 %config(noreplace) %{_sysconfdir}/openal/alsoft.conf
+%dir %{_datarootdir}/openal
+%{_datarootdir}/openal/alsoftrc.sample
 
 %files devel
 %{_bindir}/makehrtf
 %{_includedir}/*
 %{_libdir}/libopenal.so
 %{_libdir}/pkgconfig/openal.pc
+#%{_datarootdir}/openal/examples/*
+#%dir %{_datarootdir}/openal/examples
+#%{_datarootdir}/openal/examples/common/*
+
 
 %changelog
+* Fri Jan 11 2013 François Cami <fcami@fedoraproject.org> - 1.15.1-1
+- New upstream release
+
 * Fri Jul 20 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.14-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
