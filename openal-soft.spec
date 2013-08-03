@@ -1,6 +1,6 @@
 Name:           openal-soft
 Version:        1.15.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Open Audio Library
 
 Group:          System Environment/Libraries
@@ -74,6 +74,9 @@ install -Dpm644 alsoftrc.sample %{buildroot}%{_sysconfdir}/openal/alsoft.conf
 
 
 %changelog
+* Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.15.1-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+
 * Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.15.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
