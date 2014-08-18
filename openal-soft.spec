@@ -1,6 +1,6 @@
 Name:           openal-soft
-Version:        1.15.1
-Release:        5%{?dist}
+Version:        1.16.0
+Release:        1%{?dist}
 Summary:        Open Audio Library
 
 Group:          System Environment/Libraries
@@ -12,6 +12,7 @@ BuildRequires:  alsa-lib-devel
 BuildRequires:  pulseaudio-libs-devel
 BuildRequires:  portaudio-devel
 BuildRequires:  cmake
+BuildRequires:  qt-devel
 Obsoletes:      openal <= 0.0.10
 Provides:       openal = %{version}
 
@@ -57,11 +58,14 @@ install -Dpm644 alsoftrc.sample %{buildroot}%{_sysconfdir}/openal/alsoft.conf
 %files
 %doc COPYING
 %{_bindir}/openal-info
+%{_bindir}/alsoft-config
 %{_libdir}/libopenal.so.*
 %dir %{_sysconfdir}/openal
 %config(noreplace) %{_sysconfdir}/openal/alsoft.conf
 %dir %{_datarootdir}/openal
 %{_datarootdir}/openal/alsoftrc.sample
+%{_datarootdir}/openal/hrtf/default-44100.mhr
+%{_datarootdir}/openal/hrtf/default-48000.mhr
 
 %files devel
 %{_bindir}/makehrtf
@@ -74,6 +78,9 @@ install -Dpm644 alsoftrc.sample %{buildroot}%{_sysconfdir}/openal/alsoft.conf
 
 
 %changelog
+* Sun Aug 17 2014 François Cami <fcami@fedoraproject.org> - 1.16.0-1
+- New upstream release
+
 * Sun Aug 17 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.15.1-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
 
@@ -175,9 +182,9 @@ install -Dpm644 alsoftrc.sample %{buildroot}%{_sysconfdir}/openal/alsoft.conf
 * Fri Jun 26 2009 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.8.466-3
 - Fixed all warnings of rpmlint
 
-* Fri Jun 20 2009 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.8.466-2
-- Updatet the SPEC and SRPM file because openal-soft-devel conflicts with
+* Sat Jun 20 2009 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.8.466-2
+- Update the SPEC and SRPM file because openal-soft-devel conflicts with
 openal-devel
 
-* Fri Jun 20 2009 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.8.466-1
+* Sat Jun 20 2009 Thomas Kowaliczek <linuxdonald@linuxdonald.de> - 1.8.466-1
 - Initial release for Fedora
