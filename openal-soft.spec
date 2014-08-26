@@ -1,6 +1,6 @@
 Name:           openal-soft
 Version:        1.16.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Open Audio Library
 
 Group:          System Environment/Libraries
@@ -30,13 +30,22 @@ and audio capture.
 %package        devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 Obsoletes:      openal-devel <= 0.0.10
 Provides:       openal-devel = %{version}
 
 %description    devel
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
+
+%package        qt
+Summary:        Qt frontend for configuring OpenAL Soft
+Group:          Applications/System
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+
+%description    qt
+The %{name}-qt package contains alsoft-config, a Qt-based tool
+for configuring OpenAL features.
 
 %prep
 %setup -q
@@ -58,7 +67,6 @@ install -Dpm644 alsoftrc.sample %{buildroot}%{_sysconfdir}/openal/alsoft.conf
 %files
 %doc COPYING
 %{_bindir}/openal-info
-%{_bindir}/alsoft-config
 %{_libdir}/libopenal.so.*
 %dir %{_sysconfdir}/openal
 %config(noreplace) %{_sysconfdir}/openal/alsoft.conf
@@ -76,8 +84,13 @@ install -Dpm644 alsoftrc.sample %{buildroot}%{_sysconfdir}/openal/alsoft.conf
 #%dir %{_datarootdir}/openal/examples
 #%{_datarootdir}/openal/examples/common/*
 
+%files qt
+%{_bindir}/alsoft-config
 
 %changelog
+* Tue Aug 26 2014 François Cami <fcami@fedoraproject.org> - 1.16.0-2
+- Add the -qt subpackage to host the alsoft-config tool
+
 * Sun Aug 17 2014 François Cami <fcami@fedoraproject.org> - 1.16.0-1
 - New upstream release
 
