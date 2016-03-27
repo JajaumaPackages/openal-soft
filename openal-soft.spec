@@ -1,12 +1,13 @@
 Name:           openal-soft
 Version:        1.16.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Open Audio Library
 
 Group:          System Environment/Libraries
 License:        LGPLv2+
 URL:            http://kcat.strangesoft.net/openal.html
 Source0:        http://kcat.strangesoft.net/openal-releases/openal-soft-%{version}.tar.bz2
+Patch0:         openal-soft-arm_neon-only-for-32bit.patch
 
 BuildRequires:  alsa-lib-devel
 BuildRequires:  pulseaudio-libs-devel
@@ -49,6 +50,7 @@ for configuring OpenAL features.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake .
@@ -88,6 +90,9 @@ install -Dpm644 alsoftrc.sample %{buildroot}%{_sysconfdir}/openal/alsoft.conf
 %{_bindir}/alsoft-config
 
 %changelog
+* Mon Sep 8 2014 Marcin Juszkiewicz <mjuszkiewicz@redhat.com> - 1.16.0-3
+- Check for arm_neon.h only on 32bit ARM
+
 * Tue Aug 26 2014 François Cami <fcami@fedoraproject.org> - 1.16.0-2
 - Add the -qt subpackage to host the alsoft-config tool
 
