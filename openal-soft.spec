@@ -1,6 +1,6 @@
 Name:           openal-soft
-Version:        1.16.0
-Release:        3%{?dist}
+Version:        1.18.1
+Release:        1%{?dist}
 Summary:        Open Audio Library
 
 Group:          System Environment/Libraries
@@ -68,6 +68,9 @@ install -Dpm644 alsoftrc.sample %{buildroot}%{_sysconfdir}/openal/alsoft.conf
 
 %files
 %doc COPYING
+%{_bindir}/alrecord
+%{_bindir}/altonegen
+%{_bindir}/bsincgen
 %{_bindir}/openal-info
 %{_libdir}/libopenal.so.*
 %dir %{_sysconfdir}/openal
@@ -76,12 +79,20 @@ install -Dpm644 alsoftrc.sample %{buildroot}%{_sysconfdir}/openal/alsoft.conf
 %{_datarootdir}/openal/alsoftrc.sample
 %{_datarootdir}/openal/hrtf/default-44100.mhr
 %{_datarootdir}/openal/hrtf/default-48000.mhr
+%doc %{_datarootdir}/openal/presets/presets.txt
+%{_datarootdir}/openal/presets/3D7.1.ambdec
+%{_datarootdir}/openal/presets/hexagon.ambdec
+%{_datarootdir}/openal/presets/itu5.1.ambdec
+%{_datarootdir}/openal/presets/rectangle.ambdec
+%{_datarootdir}/openal/presets/square.ambdec
 
 %files devel
 %{_bindir}/makehrtf
 %{_includedir}/*
 %{_libdir}/libopenal.so
 %{_libdir}/pkgconfig/openal.pc
+%{_libdir}/cmake/OpenAL/OpenALConfig.cmake
+%{_libdir}/cmake/OpenAL/OpenALConfig-relwithdebinfo.cmake
 #%{_datarootdir}/openal/examples/*
 #%dir %{_datarootdir}/openal/examples
 #%{_datarootdir}/openal/examples/common/*
@@ -90,6 +101,9 @@ install -Dpm644 alsoftrc.sample %{buildroot}%{_sysconfdir}/openal/alsoft.conf
 %{_bindir}/alsoft-config
 
 %changelog
+* Mon Aug 07 2017 Jajauma's Packages <jajauma@yandex.ru> - 1.18.1-1
+- Update to latest upstream release
+
 * Mon Sep 8 2014 Marcin Juszkiewicz <mjuszkiewicz@redhat.com> - 1.16.0-3
 - Check for arm_neon.h only on 32bit ARM
 
